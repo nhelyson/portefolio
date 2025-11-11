@@ -9,80 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Asap:ital,wght@0,100..900;1,100..900&family=Bangers&family=Caveat:wght@400..700&family=Merienda:wght@300..900&family=Monomakh&family=Playwrite+VN:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Smooch+Sans:wght@100..900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <style>
-      html{
-         scroll-behavior: smooth;
-      }
-        
-      body{
-           scroll-behavior: smooth;
-           background-color:white;
-           font-family: 'Asap';
-        }
-
-         .size{
-          font-family: "Merienda", serif;
-         }
-  
-        .anime-pack{
-            animation: fade-in linear forwards;
-            animation-timeline: view();
-            animation-range: entry 20% cover 40%;
-            }
-         
-            .move-back{
-              animation: move 1s linear infinite;
-              background-image: linear-gradient(to right,white , black);
-              background-clip: text;
-              color: transparent;
-            }
-      @keyframes fade-in {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-      @keyframes move {
-          to{
-            background-position: 100rem;
-        }
-      }
-
-      @keyframes action {
-        0%{
-          transform:translate(0,0)
-        }
-        50%{
-          transform: translate(0,20px);
-        }
-
-        100%{
-          transform: translate(0,-20px);
-        }
-      }
-      
-      .apelle{
-        animation: action 3s linear infinite;
-      }
-
-      .background-gradient{
-        background-color: transparent;
-        border: none;
-        box-shadow:0 0 10px rgb(203, 197, 197);
-      }
-
-        button.scroll-down svg{
-          animation: move 0.6s linear infinite;
-        }
-        .row-2{
-          display: flex;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css"/>
   </head>
    <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
     <header>
@@ -131,6 +58,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="43px" height="43px" viewBox="0 0 48 48" id="Layer_2" data-name="Layer 2"><defs><style>.cls-1{fill:#fff;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;fill-rule:evenodd;}</style></defs><path class="cls-1" d="M24,2.5a21.5,21.5,0,0,0-6.8,41.9c1.08.2,1.47-.46,1.47-1s0-1.86,0-3.65c-6,1.3-7.24-2.88-7.24-2.88A5.7,5.7,0,0,0,9,33.68c-1.95-1.33.15-1.31.15-1.31a4.52,4.52,0,0,1,3.29,2.22c1.92,3.29,5,2.34,6.26,1.79a4.61,4.61,0,0,1,1.37-2.88c-4.78-.54-9.8-2.38-9.8-10.62a8.29,8.29,0,0,1,2.22-5.77,7.68,7.68,0,0,1,.21-5.69s1.8-.58,5.91,2.2a20.46,20.46,0,0,1,10.76,0c4.11-2.78,5.91-2.2,5.91-2.2a7.74,7.74,0,0,1,.21,5.69,8.28,8.28,0,0,1,2.21,5.77c0,8.26-5,10.07-9.81,10.61a5.12,5.12,0,0,1,1.46,4c0,2.87,0,5.19,0,5.9s.39,1.24,1.48,1A21.5,21.5,0,0,0,24,2.5"/></svg>
           </button>
           </a>
+          <a href="https://x.com/JIkoume32530?s=08">
           <button class="btn btn-muted m-2 border-0" style="width: 50px;">
             <svg xmlns="http://www.w3.org/2000/svg" width="43px" height="43px" viewBox="0 0 48 48" id="Layer_2" data-name="Layer 2" fill="#fff" stroke="#fff">
 
@@ -151,7 +79,7 @@
             </g>  
             </svg>
           </button>
-
+          </a>
           </div>
         </div>  
     </div>
@@ -174,55 +102,52 @@
             <h1 class="size" style="text-transform: uppercase; color:#26293b; font-weight: 900;">mes projets Encours</h1>
             <p class="fs-5 size ">je sais que t'es presse mais tu ne les auras pas maintenant</p>
         </div>
-        <div class="row g-3 mt-5 ms-lg-5 size">
-            <div class="col-sm-6 col-md-6 col-lg-5 d-flex align-items-stretch position-relative">
-                 <div class="card w-100">
-                <video src="videos/site.mp4" type="video" class="card-img-top" autoplay loop muted></video>
+        <div class="row g-4 mt-5 ms-lg-5 size">
+            <div class="col-sm-6 col-md-6 col-lg-5 d-flex align-items-stretch position-relative light">
+                 <div class="card w-100 move">
+                <video src="videos/kotsu.mp4" type="video" class="card-img-top" autoplay loop muted></video>
                 <div class="card-body">
-                  <h5 class="card-title " style="font-family: 'Asap';">manga art</h5>
-                  <p class="card-text">un  projet de sitee d'anime en html css qui devrait permettre a chacun de trouver son anime prefere il pas fini mais j'y travaille</p>
+                  <h5 class="card-title " style="font-family: 'Asap';">Kotsu</h5>
+                  <p class="card-text">un projet de site d'anime </p>
                 </div>
                 <div class="card-footer text-start bg-transparent border-0 position-relative">
-                   <button type="button" class="btn btn-muted border-dark" style="letter-spacing:2;">code source</button>
-                   <a href="" class="btn btn-primary rounded-3" data-bs-toggle="collapse" data-bs-target="#feat" style="background-color: #26293b">features</a>
+                   <a href="https://github.com/nhelyson/Anime-streaming"><button type="button" class="btn btn-muted border-dark" style="letter-spacing:2;">code source</button></a>
                 </div>
               </div>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-5 d-flex align-items-stretch">
-              <div class="card w-100">
-                <video src="videos/blender.mp4" type="video" class="card-img-top" autoplay loop muted></video>
+              <div class="card w-100 move">
+                <video src="videos/brazza_h.mp4" type="video" class="card-img-top" autoplay loop muted></video>
                 <div class="card-body">
-                  <h5 class="card-title">blender project</h5>
+                  <h5 class="card-title">Brazza heath</h5>
                   <p class="card-text">Un texte encore plus long pour voir comment ça s'adapte.</p>
                 </div>
                 <div class="card-footer text-start bg-transparent border-0 position-relative">
-                  <button type="button" class="btn btn-muted border-dark" style="letter-spacing:2;">code source</button>
-                  <a href="" class="btn btn-primary rounded-3" data-bs-toggle="collapse" data-bs-target="#feature" style="background-color: #26293b">features</a>
+                  <a href="https://github.com/nhelyson/Brazza_health"><button type="button" class="btn btn-muted border-dark" style="letter-spacing:2;">code source</button></a>
                </div>
               </div>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-5 d-flex align-items-stretch">
-                <div class="card w-100">
-                    <video src="videos/site de fond .mp4" type="video" class="card-img-top" autoplay loop muted></video>
+                <div class="card w-100 move">
+                    <video src="videos/forum.mp4" type="video" class="card-img-top" autoplay loop muted></video>
                     <div class="card-body">
-                        <h5 class="card-title">Galerie anime</h5>
+                        <h5 class="card-title">Forum etudiant</h5>
                         <p class="card-text">Un texte encore plus long pour voir comment ça s'adapte.</p>
                     </div>
                     <div class="card-footer text-start bg-transparent border-0 position-relative">
-                      <button type="button" class="btn btn-muted border-dark" style="letter-spacing:2;">code source</button>
-                      <a href="" class="btn btn-primary rounded-3" data-bs-toggle="collapse" data-bs-target="#demo" style="background-color: #26293b">features</a>
+                      <a href="https://github.com/nhelyson/forum-page"><button type="button" class="btn btn-muted border-dark" style="letter-spacing:2;">code source</button></a>
                    </div>
                 </div>    
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-5 d-flex align-items-stretch"> <div class="card w-100">
-                <video src="videos/space.mp4" type="video" class="card-img-top" autoplay loop muted></video>
+            <div class="col-sm-6 col-md-6 col-lg-5 d-flex align-items-stretch"> 
+              <div class="card w-100 move">
+                <video src="videos/lecteur cbz.mp4" type="video" class="card-img-top" autoplay loop muted></video>
                 <div class="card-body">
-                  <h5 class="card-title">space mountain</h5>
-                  <p class="card-text">pres a visite a visite la lune</p>
+                  <h5 class="card-title">lecteur cbz</h5>
+                  <p class="card-text">lecteur pdf , cbz , cbr</p>
                 </div>
                 <div class="card-footer text-start bg-transparent border-0 position-relative">
-                  <button type="button" class="btn btn-muted border-dark" style="letter-spacing:2;">code source</button>
-                  <a href="" class="btn btn-primary rounded-3" data-bs-toggle="collapse" data-bs-target="#demo" style="background-color: #26293b">features</a>
+                  <a href="https://github.com/nhelyson/lecteur_cbz-cbr-pdf"><button type="button" class="btn btn-muted border-dark" style="letter-spacing:2;">code source</button></a>
                </div>
               </div>
             </div>
@@ -234,7 +159,7 @@
         <div class="container" id="apropos" style="position: relative; top:150px;">
             <div class="row d-flex flex-row flex-md-row mt-auto anime-pack  start-0">
                 <div class="col-lg-4 col-sm-9 col-md-6">
-                  <img src="img/moi.png" class="img-fluid mx-sm-auto d-block" alt="photo-de-moi" style="filter:grayscale(50);">
+                  <img src="img/mp.jpg" class="img-fluid mx-sm-auto d-block" alt="photo-de-moi" style="filter:grayscale(50);">
                 </div>
                 <div class="col-lg-6 ms-lg-5 size" style="padding: 20px;">
                      <h1 class="text-uppercase" style="color:#26293b; font-weight: 900;letter-spacing: 10px;">A propos de moi</h1>
@@ -373,6 +298,7 @@
      </footer>
        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
        <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+       <script src="move.js"></script>
        <script src="send.js"></script>
      </body>
     </html>
