@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ikoule Japhet | Développeur Shinobi</title>
+  
+  <meta name="description" content="Portfolio de Ikoule Japhet, Développeur Full Stack et aspirant DevOps." />
+  
+  <!-- Fonts: Anime / Brush style -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Inter:wght@300;400;600;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            shinobi: {
+              orange: "#D95C14",
+              red: "#8B0000",
+              black: "#0F0F0F",
+              parchment: "#F4E4BC",
+              stone: "#4A4A4A",
+              night: "#0C1427"
+            }
+          },
+          fontFamily: {
+            brush: ['Yuji Syuku', 'serif'],
+            title: ['Noto Serif JP', 'serif'],
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- CDNs -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./src/css/shinobi.css" />
+</head>
+<body class="bg-shinobi-parchment text-shinobi-black selection:bg-shinobi-red/30 selection:text-white overflow-x-hidden font-sans">
+
+  <!-- Particle Container (Leaves in the wind) -->
+  <div id="particles-container" class="fixed inset-0 pointer-events-none z-50"></div>
+
+  <!-- Intro Scroll Animation Container -->
+  <div id="intro-screen" class="fixed inset-0 z-40 bg-shinobi-black flex flex-col items-center justify-center origin-center">
+     <div class="overflow-hidden">
+        <h1 id="intro-name" class="font-brush text-6xl md:text-8xl text-white tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-shinobi-orange to-shinobi-red stroke-text">
+           IKOULE JAPHET
+        </h1>
+     </div>
+     <p id="intro-subtitle" class="text-shinobi-parchment/80 font-sans mt-6 text-center max-w-lg px-4 opacity-0 transform translate-y-4">
+       "Chaque mission accomplie m'a rapproché du développeur que je veux devenir."
+     </p>
+     
+     <div id="intro-actions" class="mt-12 flex gap-6 opacity-0">
+        <button onclick="enterScroll()" class="group relative px-8 py-3 bg-shinobi-red text-shinobi-parchment font-title text-sm uppercase tracking-widest overflow-hidden hover:text-white transition-colors duration-300">
+           <span class="relative z-10">Commencer l'aventure</span>
+           <div class="absolute inset-0 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+        </button>
+        <button onclick="scrollToMissions()" class="px-8 py-3 border border-shinobi-red/50 text-shinobi-red font-title text-sm uppercase tracking-widest hover:bg-shinobi-red/10 transition-colors duration-300">
+           Voir mes missions
+        </button>
+     </div>
+  </div>
+
+  <!-- Navigation Scroll (Menu) -->
+  <nav class="fixed top-0 left-0 h-full w-20 border-r border-shinobi-stone/30 bg-shinobi-parchment/90 backdrop-blur z-30 flex flex-col items-center py-8 hidden md:flex">
+     <div class="writing-vertical-rl font-title text-xl tracking-widest text-shinobi-red font-bold">
+        忍
+     </div>
+     
+     <div class="flex-1 flex flex-col justify-center gap-12 text-shinobi-stone">
+        <a href="#about" class="nav-item group relative">
+           <i data-lucide="scroll" class="w-6 h-6 group-hover:text-shinobi-red transition-colors"></i>
+           <span class="absolute left-10 top-1/2 -translate-y-1/2 bg-shinobi-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap">Dossier</span>
+        </a>
+        <a href="#skills" class="nav-item group relative">
+           <i data-lucide="flame" class="w-6 h-6 group-hover:text-shinobi-red transition-colors"></i>
+           <span class="absolute left-10 top-1/2 -translate-y-1/2 bg-shinobi-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap">Techniques</span>
+        </a>
+        <a href="#missions" class="nav-item group relative">
+           <i data-lucide="swords" class="w-6 h-6 group-hover:text-shinobi-red transition-colors"></i>
+           <span class="absolute left-10 top-1/2 -translate-y-1/2 bg-shinobi-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap">Missions</span>
+        </a>
+        <a href="#timeline" class="nav-item group relative">
+           <i data-lucide="history" class="w-6 h-6 group-hover:text-shinobi-red transition-colors"></i>
+           <span class="absolute left-10 top-1/2 -translate-y-1/2 bg-shinobi-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap">Journal</span>
+        </a>
+     </div>
+  </nav>
+
+  <!-- Interactive Shuriken (Floating Button) -->
+  <div class="fixed bottom-8 right-8 z-40 group cursor-pointer" onclick="window.scrollTo(0,0)">
+     <div class="absolute inset-0 bg-shinobi-red blur-lg opacity-20 group-hover:opacity-50 transition-opacity"></div>
+     <img src="./assets/shuriken_seal_1784549057695.jpg" alt="Shuriken" class="w-16 h-16 rounded-full border-2 border-shinobi-red/50 shadow-xl group-hover:rotate-180 transition-transform duration-700" />
+  </div>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="md:ml-20 min-h-screen">
+     
+     <!-- Section 1: Dossier Ninja (À propos) -->
+     <section id="about" class="min-h-screen py-24 px-6 relative flex items-center justify-center">
+        <!-- Background Ink Wash -->
+        <div class="absolute inset-0 opacity-5 pointer-events-none bg-[url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')]"></div>
+        
+        <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-center gs-reveal">
+           <!-- Portrait -->
+           <div class="md:col-span-5 relative">
+              <div class="absolute -inset-4 border-2 border-shinobi-stone/20 transform rotate-2"></div>
+              <div class="absolute -inset-4 border-2 border-shinobi-red/20 transform -rotate-1"></div>
+              <img src="./assets/shinobi_portrait_1784549000862.jpg" alt="Ikoule Japhet" class="w-full h-auto object-cover filter contrast-125 sepia-[0.2] shadow-2xl relative z-10" />
+           </div>
+
+           <!-- Dossier Info -->
+           <div class="md:col-span-7 space-y-8 relative z-10">
+              <div>
+                 <h2 class="font-title text-sm text-shinobi-red uppercase tracking-[0.3em] mb-2 border-b-2 border-shinobi-red inline-block pb-1">Dossier Confidentiel</h2>
+                 <h3 class="font-brush text-5xl md:text-6xl text-shinobi-black mt-4">Ikoule Japhet</h3>
+              </div>
+              
+              <div class="grid grid-cols-2 gap-y-6 gap-x-12 border-t border-b border-shinobi-stone/20 py-6 font-mono text-sm">
+                 <div>
+                    <span class="block text-shinobi-stone text-xs uppercase mb-1">Localisation</span>
+                    <span class="font-bold text-shinobi-black">Village Caché du Code (France)</span>
+                 </div>
+                 <div>
+                    <span class="block text-shinobi-stone text-xs uppercase mb-1">Spécialité</span>
+                    <span class="font-bold text-shinobi-red">Développeur Full Stack</span>
+                 </div>
+                 <div>
+                    <span class="block text-shinobi-stone text-xs uppercase mb-1">Niveau</span>
+                    <span class="font-bold text-shinobi-black">Initié (Junior)</span>
+                 </div>
+                 <div>
+                    <span class="block text-shinobi-stone text-xs uppercase mb-1">Affinité</span>
+                    <span class="font-bold text-shinobi-black">Linux, Cloud, IA</span>
+                 </div>
+              </div>
+
+              <div>
+                 <span class="block text-shinobi-stone font-mono text-xs uppercase mb-2">Objectif Personnel</span>
+                 <p class="font-sans text-lg text-shinobi-black/80 leading-relaxed border-l-4 border-shinobi-red pl-4">
+                    "Maîtriser les arcanes de l'Administration Système (Linux), sceller la puissance des conteneurs (Docker) et comprendre les esprits artificiels (Ollama) pour devenir un Ingénieur DevOps complet."
+                 </p>
+              </div>
+           </div>
+        </div>
+     </section>
+
+     <!-- Section 2: Techniques (Compétences) -->
+     <section id="skills" class="py-24 px-6 bg-shinobi-black text-shinobi-parchment border-y-8 border-shinobi-red relative">
+        <div class="max-w-6xl mx-auto space-y-16 relative z-10">
+           <div class="text-center gs-reveal">
+              <h2 class="font-title text-sm text-shinobi-red uppercase tracking-[0.3em] mb-2">Arsenal Secret</h2>
+              <h3 class="font-brush text-5xl">Mes Techniques</h3>
+           </div>
+
+           <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+              
+              <!-- Front-End -->
+              <div class="space-y-6 gs-reveal">
+                 <h4 class="font-title text-2xl border-b border-shinobi-stone/50 pb-2 flex items-center gap-3">
+                    <i data-lucide="layout" class="text-shinobi-orange"></i> Technique du Front-End
+                 </h4>
+                 <div class="space-y-4">
+                    <div class="technique-bar">
+                       <div class="flex justify-between font-mono text-sm mb-1"><span>HTML / CSS</span><span>Maîtrise Complète</span></div>
+                       <div class="w-full h-1 bg-shinobi-stone/30"><div class="h-full bg-shinobi-orange w-[90%]"></div></div>
+                    </div>
+                    <div class="technique-bar">
+                       <div class="flex justify-between font-mono text-sm mb-1"><span>JavaScript</span><span>Avancé</span></div>
+                       <div class="w-full h-1 bg-shinobi-stone/30"><div class="h-full bg-shinobi-orange w-[80%]"></div></div>
+                    </div>
+                    <div class="technique-bar">
+                       <div class="flex justify-between font-mono text-sm mb-1"><span>Tailwind CSS</span><span>Avancé</span></div>
+                       <div class="w-full h-1 bg-shinobi-stone/30"><div class="h-full bg-shinobi-orange w-[85%]"></div></div>
+                    </div>
+                 </div>
+              </div>
+
+              <!-- Back-End -->
+              <div class="space-y-6 gs-reveal">
+                 <h4 class="font-title text-2xl border-b border-shinobi-stone/50 pb-2 flex items-center gap-3">
+                    <i data-lucide="server" class="text-shinobi-red"></i> Technique du Back-End
+                 </h4>
+                 <div class="space-y-4">
+                    <div class="technique-bar">
+                       <div class="flex justify-between font-mono text-sm mb-1"><span>PHP</span><span>Avancé</span></div>
+                       <div class="w-full h-1 bg-shinobi-stone/30"><div class="h-full bg-shinobi-red w-[85%]"></div></div>
+                    </div>
+                    <div class="technique-bar">
+                       <div class="flex justify-between font-mono text-sm mb-1"><span>Node.js</span><span>Intermédiaire</span></div>
+                       <div class="w-full h-1 bg-shinobi-stone/30"><div class="h-full bg-shinobi-red w-[70%]"></div></div>
+                    </div>
+                    <div class="technique-bar">
+                       <div class="flex justify-between font-mono text-sm mb-1"><span>Bases de Données (SQL/NoSQL)</span><span>Avancé</span></div>
+                       <div class="w-full h-1 bg-shinobi-stone/30"><div class="h-full bg-shinobi-red w-[80%]"></div></div>
+                    </div>
+                 </div>
+              </div>
+
+              <!-- Systèmes & DevOps -->
+              <div class="space-y-6 gs-reveal">
+                 <h4 class="font-title text-2xl border-b border-shinobi-stone/50 pb-2 flex items-center gap-3">
+                    <i data-lucide="terminal-square" class="text-gray-400"></i> Technique des Systèmes
+                 </h4>
+                 <div class="space-y-4">
+                    <div class="technique-bar">
+                       <div class="flex justify-between font-mono text-sm mb-1"><span>Linux (Debian/Ubuntu)</span><span>Avancé</span></div>
+                       <div class="w-full h-1 bg-shinobi-stone/30"><div class="h-full bg-gray-400 w-[85%]"></div></div>
+                    </div>
+                    <div class="technique-bar">
+                       <div class="flex justify-between font-mono text-sm mb-1"><span>Docker</span><span>Intermédiaire</span></div>
+                       <div class="w-full h-1 bg-shinobi-stone/30"><div class="h-full bg-gray-400 w-[70%]"></div></div>
+                    </div>
+                    <div class="technique-bar">
+                       <div class="flex justify-between font-mono text-sm mb-1"><span>Git / Bash Scripting</span><span>Avancé</span></div>
+                       <div class="w-full h-1 bg-shinobi-stone/30"><div class="h-full bg-gray-400 w-[80%]"></div></div>
+                    </div>
+                 </div>
+              </div>
+
+              <!-- Intelligence Artificielle -->
+              <div class="space-y-6 gs-reveal">
+                 <h4 class="font-title text-2xl border-b border-shinobi-stone/50 pb-2 flex items-center gap-3">
+                    <i data-lucide="sparkles" class="text-yellow-500"></i> Technique de l'IA
+                 </h4>
+                 <div class="space-y-4">
+                    <div class="technique-bar">
+                       <div class="flex justify-between font-mono text-sm mb-1"><span>Ollama / LLMs Locaux</span><span>Intermédiaire</span></div>
+                       <div class="w-full h-1 bg-shinobi-stone/30"><div class="h-full bg-yellow-500 w-[60%]"></div></div>
+                    </div>
+                    <div class="technique-bar">
+                       <div class="flex justify-between font-mono text-sm mb-1"><span>Prompt Engineering</span><span>Avancé</span></div>
+                       <div class="w-full h-1 bg-shinobi-stone/30"><div class="h-full bg-yellow-500 w-[75%]"></div></div>
+                    </div>
+                 </div>
+              </div>
+
+           </div>
+        </div>
+     </section>
+
+     <!-- Section 3: Missions (GitHub) -->
+     <section id="missions" class="py-24 px-6 relative">
+        <div class="max-w-6xl mx-auto space-y-16">
+           <div class="text-center gs-reveal">
+              <h2 class="font-title text-sm text-shinobi-red uppercase tracking-[0.3em] mb-2">Registre Officiel</h2>
+              <h3 class="font-brush text-5xl">Missions Accomplies</h3>
+              <p class="font-mono text-sm text-shinobi-stone mt-4">Données extraites des archives GitHub</p>
+           </div>
+
+           <!-- GitHub Missions Grid -->
+           <div id="github-missions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div class="text-center w-full col-span-full font-mono text-sm text-shinobi-stone">
+                 <i data-lucide="loader-2" class="w-6 h-6 animate-spin mx-auto mb-2"></i>
+                 Recherche de parchemins de mission...
+              </div>
+           </div>
+        </div>
+     </section>
+
+     <!-- Section 4: Journal de Progression (Timeline) -->
+     <section id="timeline" class="py-24 px-6 relative border-t-2 border-shinobi-stone/20">
+        <div class="max-w-4xl mx-auto space-y-16">
+           <div class="text-center gs-reveal">
+              <h2 class="font-title text-sm text-shinobi-red uppercase tracking-[0.3em] mb-2">Chronologie</h2>
+              <h3 class="font-brush text-5xl">La Voie du Shinobi</h3>
+           </div>
+
+           <div class="relative border-l-2 border-shinobi-stone/30 ml-4 md:ml-8 space-y-12">
+              
+              <div class="relative pl-8 gs-reveal">
+                 <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-shinobi-parchment border-2 border-shinobi-black"></div>
+                 <h4 class="font-title font-bold text-xl text-shinobi-black">Premières lignes de code</h4>
+                 <p class="font-sans text-sm text-shinobi-stone mt-2">Découverte des fondations : HTML, CSS et JavaScript. Le début de l'entraînement.</p>
+              </div>
+
+              <div class="relative pl-8 gs-reveal">
+                 <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-shinobi-parchment border-2 border-shinobi-red"></div>
+                 <h4 class="font-title font-bold text-xl text-shinobi-black">Maîtrise du Back-End (PHP & BD)</h4>
+                 <p class="font-sans text-sm text-shinobi-stone mt-2">Manipulation des données avec PostgreSQL et MongoDB. Création de systèmes robustes.</p>
+              </div>
+
+              <div class="relative pl-8 gs-reveal">
+                 <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-shinobi-parchment border-2 border-gray-500"></div>
+                 <h4 class="font-title font-bold text-xl text-shinobi-black">La voie du Système (Linux & Docker)</h4>
+                 <p class="font-sans text-sm text-shinobi-stone mt-2">Immersion dans l'administration système. Conteneurisation des applications pour garantir leur stabilité sur tous les terrains.</p>
+              </div>
+
+              <div class="relative pl-8 gs-reveal">
+                 <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-shinobi-parchment border-2 border-yellow-500"></div>
+                 <h4 class="font-title font-bold text-xl text-shinobi-black">L'Éveil à l'Intelligence Artificielle</h4>
+                 <p class="font-sans text-sm text-shinobi-stone mt-2">Intégration d'Ollama et de modèles locaux pour créer des systèmes intelligents et autonomes.</p>
+              </div>
+
+           </div>
+        </div>
+     </section>
+
+  </main>
+
+  <script type="module" src="./src/js/shinobi.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
