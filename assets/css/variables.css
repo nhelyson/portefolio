@@ -1,0 +1,51 @@
+/* ==========================================================================
+   Japhet Ikoule — Anime Cyber-Zen Design System Tokens (variables.css)
+   ========================================================================== */
+
+:root {
+  /* Color Palette — Midnight Sky & Cyber-Zen Accent */
+  --bg-dark: #070b14;
+  --bg-dark-alt: #0a101d;
+  --bg-card: rgba(13, 20, 36, 0.75);
+  --bg-card-hover: rgba(21, 31, 56, 0.85);
+  --bg-glass-nav: rgba(7, 11, 20, 0.85);
+  
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-card: rgba(139, 92, 246, 0.2);
+  --border-glow: rgba(139, 92, 246, 0.5);
+
+  /* Accents */
+  --accent-violet: #8b5cf6;
+  --accent-violet-glow: rgba(139, 92, 246, 0.4);
+  --accent-cyan: #06b6d4;
+  --accent-cyan-glow: rgba(6, 182, 212, 0.4);
+  --accent-pink: #ec4899;
+  --accent-emerald: #10b981;
+  --accent-amber: #f59e0b;
+  
+  /* Text */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-kanji: rgba(255, 255, 255, 0.04);
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-jp: 'Noto Sans JP', 'Plus Jakarta Sans', sans-serif;
+
+  /* Motion & Easing (Emil Kowalski Design Engineering Standards) */
+  --ease-out-crisp: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-smooth: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  
+  --transition-fast: 160ms var(--ease-out-crisp);
+  --transition-normal: 250ms var(--ease-out-crisp);
+  --transition-slow: 400ms var(--ease-out-crisp);
+
+  /* Elevation Shadows */
+  --shadow-glow-violet: 0 0 25px rgba(139, 92, 246, 0.25);
+  --shadow-glow-cyan: 0 0 25px rgba(6, 182, 212, 0.25);
+  --shadow-card: 0 16px 40px rgba(0, 0, 0, 0.5);
+}

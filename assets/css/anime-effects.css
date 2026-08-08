@@ -1,0 +1,122 @@
+/* ==========================================================================
+   Japhet Ikoule — Anime HUD & Celestial Visual Effects (anime-effects.css)
+   ========================================================================== */
+
+/* Kanji Background Watermark */
+.kanji-watermark {
+  position: absolute;
+  font-family: var(--font-jp);
+  font-size: 14rem;
+  font-weight: 900;
+  color: var(--text-kanji);
+  user-select: none;
+  pointer-events: none;
+  z-index: 1;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Anime HUD Framing Lines */
+.hud-corner {
+  position: relative;
+}
+
+.hud-corner::before,
+.hud-corner::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: var(--accent-violet);
+  border-style: solid;
+  pointer-events: none;
+  transition: all var(--transition-normal);
+  opacity: 0.6;
+}
+
+.hud-corner::before {
+  top: 0;
+  left: 0;
+  border-width: 2px 0 0 2px;
+}
+
+.hud-corner::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 2px 2px 0;
+}
+
+.hud-corner:hover::before,
+.hud-corner:hover::after {
+  opacity: 1;
+  width: 16px;
+  height: 16px;
+  border-color: var(--accent-cyan);
+}
+
+/* Glowing Halo Effect */
+.glow-halo {
+  position: relative;
+}
+
+.glow-halo::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--accent-violet), var(--accent-cyan));
+  opacity: 0;
+  filter: blur(14px);
+  transition: opacity var(--transition-normal);
+  z-index: -1;
+}
+
+.glow-halo:hover::before {
+  opacity: 0.5;
+}
+
+/* Floating Animation */
+.animate-float {
+  animation: animeFloat 6s ease-in-out infinite;
+}
+
+@keyframes animeFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(0.5deg); }
+}
+
+/* Scanning Line Animation */
+.scan-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.scan-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(139, 92, 246, 0.15), transparent);
+  animation: scanAnim 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scanAnim {
+  0% { top: -100%; }
+  50%, 100% { top: 200%; }
+}
+
+/* Subtle Shimmer for Skeleton Loaders */
+.skeleton-shimmer {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.03) 25%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.03) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite;
+  border-radius: 8px;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
